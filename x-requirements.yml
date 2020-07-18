@@ -1,0 +1,81 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/garyttt/environment-mycluster-dev
+cluster:
+  clusterName: cicd-cluster
+  devEnvApprovers:
+  - garyttt
+  environmentGitOwner: garyttt
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  provider: aws
+  region: ap-southeast-1
+environments:
+- ingress:
+    domain: "kops.learn-devops.online"
+    externalDNS: true
+    namespaceSubDomain: -dev.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-cicd-cluster-dev
+- ingress:
+    domain: kops.learn-devops.online
+    externalDNS: true
+    namespaceSubDomain: -stg.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-cicd-cluster-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-cicd-cluster-production
+gitops: true
+ingress:
+  domain: kops.learn-devops.online
+  externalDNS: true
+  namespaceSubDomain: -jx.
+  tls:
+    email: ""
+    enabled: false
+    production: false
+kaniko: true
+repository: nexus
+secretStorage: localStorage
+storage:
+  backup:
+    enabled: true
+    url: s3://cicd-cluster-backup
+  logs:
+    enabled: true
+    url: s3://cicd-cluster-logs
+  reports:
+    enabled: true
+    url: s3://cicd-cluster-reports
+  repository:
+    enabled: true
+    url: s3://cicd-cluster-repository
+terraform: true
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
+versionStream:
+  ref: v1.0.538
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
+webhook: lighthouse
