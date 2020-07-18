@@ -14,9 +14,9 @@ cluster:
   region: ap-southeast-1
 environments:
 - ingress:
-    domain: ""
-    externalDNS: false
-    namespaceSubDomain: -jx.
+    domain: "kops.learn-devops.online"
+    externalDNS: true
+    namespaceSubDomain: -dev.
     tls:
       email: ""
       enabled: false
@@ -24,8 +24,8 @@ environments:
   key: dev
 - ingress:
     domain: "kops.learn-devops.online"
-    externalDNS: false
-    namespaceSubDomain: ""
+    externalDNS: true
+    namespaceSubDomain: -stg.
     tls:
       email: ""
       enabled: false
@@ -34,7 +34,7 @@ environments:
 - ingress:
     domain: ""
     externalDNS: false
-    namespaceSubDomain: ""
+    namespaceSubDomain: -jx.
     tls:
       email: ""
       enabled: false
@@ -43,28 +43,28 @@ environments:
 gitops: true
 ingress:
   domain: "kops.learn-devops.online"
-  externalDNS: false
-  namespaceSubDomain: -jx.
+  externalDNS: true
+  namespaceSubDomain: -dev.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
 repository: nexus
-secretStorage: local
+secretStorage: localStorage
 storage:
   backup:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://cicd-cluster-backup
   logs:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://cicd-cluster-logs
   reports:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://cicd-cluster-reports
   repository:
-    enabled: false
-    url: ""
+    enabled: true
+    url: s3://cicd-cluster-repository
 terraform: true
 vault: {}
 velero:
