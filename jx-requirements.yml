@@ -4,6 +4,8 @@ autoUpdate:
 bootConfigURL: https://github.com/garyttt/environment-mycluster-dev
 cluster:
   clusterName: cicd-cluster
+  devEnvApprovers:
+  - garyttt
   environmentGitOwner: garyttt
   environmentGitPublic: true
   gitKind: github
@@ -22,8 +24,9 @@ environments:
       enabled: false
       production: false
   key: dev
+  repository: environment-cicd-cluster-dev
 - ingress:
-    domain: "kops.learn-devops.online"
+    domain: kops.learn-devops.online
     externalDNS: false
     namespaceSubDomain: ""
     tls:
@@ -31,6 +34,7 @@ environments:
       enabled: false
       production: false
   key: staging
+  repository: environment-cicd-cluster-staging
 - ingress:
     domain: ""
     externalDNS: false
@@ -40,9 +44,10 @@ environments:
       enabled: false
       production: false
   key: production
+  repository: environment-cicd-cluster-production
 gitops: true
 ingress:
-  domain: "kops.learn-devops.online"
+  domain: kops.learn-devops.online
   externalDNS: false
   namespaceSubDomain: -jx.
   tls:
@@ -71,6 +76,6 @@ velero:
   schedule: ""
   ttl: ""
 versionStream:
-  ref: master
+  ref: v1.0.538
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: lighthouse
