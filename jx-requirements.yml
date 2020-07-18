@@ -3,23 +3,27 @@ autoUpdate:
   schedule: ""
 bootConfigURL: https://github.com/garyttt/environment-mycluster-dev
 cluster:
+  clusterName: cicd-cluster
+  environmentGitOwner: garyttt
+  environmentGitPublic: true
   gitKind: github
   gitName: github
   gitServer: https://github.com
   namespace: jx
   provider: aws
+  region: ap-southeast-1
 environments:
 - ingress:
     domain: ""
     externalDNS: false
-    namespaceSubDomain: ""
+    namespaceSubDomain: -jx.
     tls:
       email: ""
       enabled: false
       production: false
   key: dev
 - ingress:
-    domain: ""
+    domain: "kops.learn-devops.online"
     externalDNS: false
     namespaceSubDomain: ""
     tls:
@@ -38,7 +42,7 @@ environments:
   key: production
 gitops: true
 ingress:
-  domain: ""
+  domain: "kops.learn-devops.online"
   externalDNS: false
   namespaceSubDomain: -jx.
   tls:
@@ -61,6 +65,7 @@ storage:
   repository:
     enabled: false
     url: ""
+terraform: true
 vault: {}
 velero:
   schedule: ""
